@@ -13,6 +13,7 @@
 		440AF7051D5184F800BA631A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 440AF7041D5184F800BA631A /* Assets.xcassets */; };
 		440AF7081D5184F800BA631A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440AF7061D5184F800BA631A /* LaunchScreen.storyboard */; };
 		440AF7101D51850E00BA631A /* SwiftSmileRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AF70F1D51850E00BA631A /* SwiftSmileRatingView.swift */; };
+		44EE34931D51EC09007772E8 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 44EE34921D51EC09007772E8 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		440AF7071D5184F800BA631A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		440AF7091D5184F800BA631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		440AF70F1D51850E00BA631A /* SwiftSmileRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSmileRatingView.swift; sourceTree = "<group>"; };
+		44EE34921D51EC09007772E8 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				440AF7041D5184F800BA631A /* Assets.xcassets */,
 				440AF7061D5184F800BA631A /* LaunchScreen.storyboard */,
 				440AF7091D5184F800BA631A /* Info.plist */,
+				44EE34921D51EC09007772E8 /* README.md */,
 			);
 			path = SwiftSmileRating;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				440AF7001D5184F800BA631A /* ViewController.swift in Sources */,
 				440AF7101D51850E00BA631A /* SwiftSmileRatingView.swift in Sources */,
+				44EE34931D51EC09007772E8 /* README.md in Sources */,
 				440AF6FE1D5184F800BA631A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +294,7 @@
 				440AF70E1D5184F800BA631A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -22,11 +22,31 @@ class SwiftSmileRatingView: UIView {
     @IBInspectable
     var maxScore: Int = 100 {
         didSet {
-            score = maxScore / 2
+            score = CGFloat(maxScore) / 2
+        }
+    }
+    @IBInspectable
+    var currentScore: Int {
+        get {
+            return Int(score)
+        }
+        
+        set {
+            if newValue > maxScore {
+                score = CGFloat(maxScore)
+            } else if newValue < 0 {
+                score = 0
+            } else {
+                score = CGFloat(newValue)
+            }
         }
     }
     
-    private var score: Int = 50
+    private var score: CGFloat! {
+        didSet {
+            updatePathes()
+        }
+    }
     private var controlPoint: CGPoint!
     private var touchStartPoint: CGPoint!
     private var maxOffset: CGFloat!
@@ -34,12 +54,6 @@ class SwiftSmileRatingView: UIView {
     
     private let circleShapeLayer = CAShapeLayer()
     private let lineShapeLayer = CAShapeLayer()
-    
-    var currentScore: Int! {
-        get {
-            return score
-        }
-    }
     
     var delegate: SwiftSmileRatingViewDelegate?
     
@@ -59,8 +73,6 @@ class SwiftSmileRatingView: UIView {
     func setup() {
         self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerHandler(_:))))
         self.userInteractionEnabled = true
-        
-        score = maxScore / 2
     }
     
     func panGestureRecognizerHandler(gesture: UIPanGestureRecognizer) {
@@ -80,16 +92,11 @@ class SwiftSmileRatingView: UIView {
                 y = maxOffset
             }
             
-            let score = Int((y-minOffset)/((maxOffset-minOffset)/CGFloat(maxScore)))
+            let score = (y-minOffset)/((maxOffset-minOffset)/CGFloat(maxScore))
             
-            if self.score != score {
-                self.score = score
-                delegate?.smileRatingView(self, didScoreChange: self.score)
-            }
+            self.score = score
             
-            controlPoint = CGPointMake(controlPoint.x, y)
-            
-            updatePathes()
+            delegate?.smileRatingView(self, didScoreChange: Int(score))
             
             touchStartPoint = point
         }
@@ -97,10 +104,10 @@ class SwiftSmileRatingView: UIView {
     
     func updatePathes() {
         
-        if score > Int(Double(maxScore) * 0.8) {
+        if score > CGFloat(maxScore) * 0.8 {
             circleShapeLayer.strokeColor = goodColor.CGColor
             lineShapeLayer.strokeColor = goodColor.CGColor
-        } else if score < Int(Double(maxScore) * 0.2) {
+        } else if score < CGFloat(maxScore) * 0.2 {
             circleShapeLayer.strokeColor = badColor.CGColor
             lineShapeLayer.strokeColor = badColor.CGColor
         } else {
@@ -122,9 +129,9 @@ class SwiftSmileRatingView: UIView {
         maxOffset = rect.width/2 + hoffset + rect.width * 0.20
         minOffset = rect.width/2 + hoffset - rect.width * 0.20
         
-        if controlPoint == nil {
-            controlPoint = CGPoint(x: rect.width/2, y: rect.width/2 + hoffset)
-        }
+        let offset = ((maxOffset - minOffset) / CGFloat(maxScore)) * CGFloat(score) + minOffset
+        
+        controlPoint = CGPointMake(rect.width/2, offset)
         
         let line = UIBezierPath()
         line.moveToPoint(startPoint)
@@ -141,13 +148,11 @@ class SwiftSmileRatingView: UIView {
         lineShapeLayer.frame = rect
         lineShapeLayer.lineWidth = lineWidth
         lineShapeLayer.fillColor = UIColor.clearColor().CGColor
-        lineShapeLayer.strokeColor = normalColor.CGColor
         lineShapeLayer.lineCap = kCALineCapRound
         
         circleShapeLayer.frame = rect
         circleShapeLayer.lineWidth = lineWidth
         circleShapeLayer.fillColor = UIColor.clearColor().CGColor
-        circleShapeLayer.strokeColor = normalColor.CGColor
         circleShapeLayer.path = UIBezierPath(
             arcCenter: CGPointMake(rect.width/2, rect.width/2), radius: rect.width/2 - lineWidth, startAngle: 0, endAngle: CGFloat(M_PI)*2, clockwise: true).CGPath
         
