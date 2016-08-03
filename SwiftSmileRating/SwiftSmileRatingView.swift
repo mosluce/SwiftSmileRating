@@ -20,36 +20,13 @@ class SwiftSmileRatingView: UIView {
     @IBInspectable
     var lineWidth: CGFloat = 5
     @IBInspectable
-    var maxScore: Int = 10 {
+    var maxScore: Int = 100 {
         didSet {
             score = maxScore / 2
-            updatePathes()
         }
     }
     
-    var currentScore: Int! {
-        get {
-            return score
-        }
-        
-        set {
-            if newValue > maxScore {
-                self.currentScore = maxScore
-                return
-            }
-            
-            if newValue < 0 {
-                self.currentScore = 0
-                return
-            }
-            
-            score = newValue
-            updatePathes()
-        }
-    }
-    
-    private var score: Int!
-    
+    private var score: Int = 50
     private var controlPoint: CGPoint!
     private var touchStartPoint: CGPoint!
     private var maxOffset: CGFloat!
@@ -57,6 +34,12 @@ class SwiftSmileRatingView: UIView {
     
     private let circleShapeLayer = CAShapeLayer()
     private let lineShapeLayer = CAShapeLayer()
+    
+    var currentScore: Int! {
+        get {
+            return score
+        }
+    }
     
     var delegate: SwiftSmileRatingViewDelegate?
     
@@ -77,7 +60,7 @@ class SwiftSmileRatingView: UIView {
         self.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerHandler(_:))))
         self.userInteractionEnabled = true
         
-        score = maxScore / 5
+        score = maxScore / 2
     }
     
     func panGestureRecognizerHandler(gesture: UIPanGestureRecognizer) {
