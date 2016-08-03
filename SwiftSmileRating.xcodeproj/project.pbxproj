@@ -12,6 +12,7 @@
 		440AF7031D5184F800BA631A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440AF7011D5184F800BA631A /* Main.storyboard */; };
 		440AF7051D5184F800BA631A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 440AF7041D5184F800BA631A /* Assets.xcassets */; };
 		440AF7081D5184F800BA631A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 440AF7061D5184F800BA631A /* LaunchScreen.storyboard */; };
+		440AF7101D51850E00BA631A /* SwiftSmileRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440AF70F1D51850E00BA631A /* SwiftSmileRatingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		440AF7041D5184F800BA631A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		440AF7071D5184F800BA631A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		440AF7091D5184F800BA631A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		440AF70F1D51850E00BA631A /* SwiftSmileRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSmileRatingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				440AF6FD1D5184F800BA631A /* AppDelegate.swift */,
 				440AF6FF1D5184F800BA631A /* ViewController.swift */,
+				440AF70F1D51850E00BA631A /* SwiftSmileRatingView.swift */,
 				440AF7011D5184F800BA631A /* Main.storyboard */,
 				440AF7041D5184F800BA631A /* Assets.xcassets */,
 				440AF7061D5184F800BA631A /* LaunchScreen.storyboard */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				440AF7001D5184F800BA631A /* ViewController.swift in Sources */,
+				440AF7101D51850E00BA631A /* SwiftSmileRatingView.swift in Sources */,
 				440AF6FE1D5184F800BA631A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
